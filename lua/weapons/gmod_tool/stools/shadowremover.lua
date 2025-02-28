@@ -83,9 +83,12 @@ end
 -- Handle what happens when pressing reload
 -----------------------------------------------------------------------------
 	function TOOL:Reload(trace)
-		local ent = trace.Entity
-		_, _, ent.v = ColorToHSV(ent.originalcolor)
-		ent:SetColor(ent.originalcolor)
+		if SERVER then
+			local ent = trace.Entity
+			_, _, ent.v = ColorToHSV(ent.originalcolor)
+			ent:SetColor(ent.originalcolor)
+		end
+
 		return true
 	end
 
